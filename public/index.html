@@ -1,86 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
+<html lang="en-us">
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pitchfork Scraper</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./style.css">
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-    <!-- bootstrap navbar -->
-    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-secondary">
-        <a class="navbar-brand">Pitchfork Scraper</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#about">Saved Albums</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- bootstrap navbar -->
-
-    <h3>Albums Of The Week</h3>
-    <table id="results">
-      <thead>
-        <tr>
-          <th id="artist">Artist</th>
-          <th id="album">Album</th>
-        </tr>
-      </thead>
-      <tbody id="table-body">
-        <!-- Results from DB here -->
-      </tbody>
-    </table>
+    <title>Scraping With Mongoose</title>
+    <style>
+      body { background-color: #F2F6D0 }
+      #wrapper {
+        width: 960px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5%;
+      }
+      #albums {
+        display: inline-block;
+        overflow: auto;
+        width: 60%;
+        height: 700px;
+      }
+      #notes {
+        float: right;
+        width: 30%;
+      }
+      textarea, input {
+        display: block;
+        width: 100%;
+        background-color: #FCF5C7;
+      }
+      input {
+        height: 36px;
+        font-size: 24px;
+      }
+      textarea {
+        height: 200px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>Note Scraper</h1>
+      <h2><i>If you can do this...the homework should be no problem.</i></h2>
+      <div id="albums"></div>
+      <div id="notes"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="app.js"></script>
-
-
-    <!-- bootstrap footer -->
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-        <div class="nav-div">
-            <span>
-                <a href="https://www.facebook.com/alex.eversbusch"><img id="social-media-icon" src="./images/fb.png"
-                        alt="facebook"></a>
-            </span>
-            <span>
-                <a href="https://github.com/abusch419"><img id="social-media-icon" src="./images/github.png"
-                        alt="github"></a>
-            </span>
-            <span>
-                <a href="https://www.instagram.com/localmotiveathens/"><img id="social-media-icon"
-                        src="./images/insta.png" alt="insta"></a>
-            </span>
-            <span>
-                <a href="https://www.linkedin.com/in/alex-eversbusch-59834b25/"><img id="social-media-icon"
-                        src="./images/linkedin.png" alt="linkedin"></a>
-            </span>
-            <span>
-                <a href="https://soundcloud.com/localmotiveathens"><img id="social-media-icon"
-                        src="./images/soundcloud.png" alt="soundcloud"></a>
-            </span>
-            <span>
-                <a href="https://abusch419.github.io/Alex-Eversbusch-Portfolio/"><img id="social-media-icon"
-                        src="./images/resume.png" alt="webpage"></a>
-            </span>
-        </div>
-    </nav>
-    <!-- bootstrap footer -->
-    <link rel="stylesheet" href="./js/app.js">
-
-</body>
-
+  </body>
 </html>
