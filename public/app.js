@@ -1,9 +1,11 @@
 // Grab the albums as a json
 $.getJSON("/albums", function (data) {
   // For each one
-  for (var i = 0; i < data.length; i++) {
-    // Display the apropos information on the page
-    let albumCard = `
+  for (let i = 0; i < data.length; i++) {
+    // run get uri async
+    getAlbumUri(data[i].albumName, access_token)
+    .then(function(response) {
+      let albumCard = `
     <div class="card col-12 col-md-12 col-lg-6" data-id="${data[i]._id}" style="width: 18rem;">
     <div class="card-header">
       <h3 class="artist-name">${data[i].artistName}</h3>
@@ -16,18 +18,19 @@ $.getJSON("/albums", function (data) {
       <div class="row">
         <a class="btn col-12 btn-default review-btn" id="l-link"
           href="https://pitchfork.com${data[i].reviewLink}">Read Review</a>
-        <a class="btn col-12 btn-default spotify-btn" id="r-link" data-name="${data[i].albumName}">Listen In Spotify</a>
+        <a class="btn col-12 btn-default spotify-btn" id="r-link" href="${response.albums.items[0].uri}">Listen In Spotify</a>
       </div>
     </div>
   </div>`
-    $("#albums").append(albumCard);
+    $("#albums").append(albumCard)}
+    )
+    // Display the apropos information on the page
+    
   }
-  $(document).on("click", ".spotify-btn", function (e) {
-    e.preventDefault()
-    selectedAlbum = $(this).data()
-    getAlbumUri(selectedAlbum, access_token);
-  })
+ 
 });
+
+
 
 
 
@@ -193,7 +196,7 @@ let access_token;
 
 
 function getAlbumUri(searchParams, token) {
-  $.ajax({
+  return $.ajax({
     url:
       "https://api.spotify.com/v1/search?q=" +
       searchParams +
@@ -205,10 +208,6 @@ function getAlbumUri(searchParams, token) {
     },
 
   })
-    .then(function (response) {
-      console.log(response.albums.items[0].uri)
-    })
-
 
 }
 
