@@ -26,6 +26,7 @@ $.getJSON("/albums", function (data) {
 });
 
 
+
 // Whenever someone clicks a p tag
 $(document).on("click", ".card", function () {
   // Empty the notes from the note section
