@@ -6,13 +6,27 @@ var Schema = mongoose.Schema;
 // Using the Schema constructor, create a new UserSchema object
 // This is similar to a Sequelize model
 var AlbumSchema = new Schema({
-  // `artist` is required and of type String
   artistName: {
     type: String,
     required: true
   },
-  // `album` is required and of type String
   albumName: {
+    type: String,
+    required: true
+  },
+  albumArt: {
+    type: String,
+    required: true
+  },
+  reviewLink: {
+    type: String,
+    required: true
+  },
+  genre: {
+    type: String,
+    required: true
+  },
+  releaseDate: {
     type: String,
     required: true
   },

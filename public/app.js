@@ -1,15 +1,33 @@
 // Grab the albums as a json
-$.getJSON("/albums", function(data) {
+$.getJSON("/albums", function (data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#albums").append("<p data-id='" + data[i]._id + "'>" + data[i].artistName + "<br />" + data[i].albumName + "</p>");
+    let albumCard = `
+    <div class="card col-12 col-md-12 col-lg-6" data-id="${data[i]._id}" style="width: 18rem;">
+    <div class="card-header">
+      <h3 class="artist-name">${data[i].artistName}</h3>
+      <h4 class="album-name">${data[i].albumName}</h4>
+      <h4 class="genre-name">${data[i].genre}</h4>
+      <h4 class="genre-name">${data[i].releaseDate}</h4>
+    </div>
+    <img class="card-img-top" src="${data[i].albumArt}" alt="albumImage">
+    <div class="card-body">
+      <div class="row">
+        <a class="btn col-12 btn-default proj-btn" id="l-link"
+          href="https://pitchfork.com${data[i].reviewLink}">Read Review</a>
+        <a class="btn col-12 btn-default proj-btn" id="r-link"
+          href="#">Create Spotify Playlist</a>
+      </div>
+    </div>
+  </div>`
+    $("#albums").append(albumCard);
   }
 });
 
 
 // Whenever someone clicks a p tag
-$(document).on("click", "p", function() {
+$(document).on("click", ".card", function () {
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the p tag
@@ -21,7 +39,7 @@ $(document).on("click", "p", function() {
     url: "/albums/" + thisId
   })
     // With that done, add the note information to the page
-    .then(function(data) {
+    .then(function (data) {
       console.log(data);
       // The artistName of the article
       $("#notes").append("<h2>" + data.artistName + "</h2>");
@@ -43,7 +61,7 @@ $(document).on("click", "p", function() {
 });
 
 // When you click the savenote button
-$(document).on("click", "#savenote", function() {
+$(document).on("click", "#savenote", function () {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
 
@@ -59,7 +77,7 @@ $(document).on("click", "#savenote", function() {
     }
   })
     // With that done
-    .then(function(data) {
+    .then(function (data) {
       // Log the response
       console.log(data);
       // Empty the notes section

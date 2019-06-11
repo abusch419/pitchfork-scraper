@@ -39,13 +39,17 @@ app.get("/scrape", function (req, res) {
     var $ = cheerio.load(response.data);
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $(".artist-list").each(function (i, element) {
+    $(".review").each(function (i, element) {
       // Save an empty result object
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.artistName = $(this).text()
-      result.albumName = $(this).next(".review__title-album").text()
+      result.reviewLink = $(this).find('a').attr('href')
+      result.albumArt = $(this).find('img').attr('src')
+      result.artistName = $(this).find('.artist-list').text()
+      result.albumName = $(this).find('h2').text()
+      result.genre = $(this).find('.genre-list__item').text()
+      result.releaseDate = $(this).find('.pub-date').text()
         
       // Create a new Article using the `result` object built from scraping
       db.Album.create(result)
