@@ -1,47 +1,49 @@
 // scrape the website, if there are new albums add them to the database, 
 // if not, show a message that the database is up to date
-$("#scrape").on("click", function(e) {
+$("#scrape").on("click", function (e) {
   e.preventDefault()
-  return $.get("/scrape", function(data) {
-    
+  return $.get("/scrape", function (data) {
+
   }).then(renderAlbums())
 })
 
 
 
 function renderAlbums(data) {
-// Grab the albums which are currently in the databse as a json
-$.getJSON("/albums", function (data) {
-  $(".albums").empty()
-  // For each one
-  for (let i = 0; i < data.length; i++) {
-    // run get uri async
-    getAlbumUri(data[i].albumName, access_token)
-    .then(function(response) {
-      let albumCard = `
-    <div class="card col-12 col-md-12 col-lg-6" data-id="${data[i]._id}" style="width: 18rem;">
-    <div class="card-header">
-      <h3 class="artist-name">${data[i].artistName}</h3>
-      <h4 class="album-name">${data[i].albumName}</h4>
-      <h4 class="genre-name">${data[i].genre}</h4>
-      <h4 class="genre-name">${data[i].releaseDate}</h4>
+  // Grab the albums which are currently in the databse as a json
+  $.getJSON("/albums", function (data) {
+    $(".albums").empty()
+    // For each one
+    for (let i = 0; i < data.length; i++) {
+      // run get uri async
+      getAlbumUri(data[i].albumName, access_token)
+        .then(function (response) {
+          let albumCard = 
+  `<div class="card col-12 col-md-4 col-lg-4" data-id="${data[i]._id}" style="width: 18rem;">
+  <div class="card-header" id="project-name">
+    ${data[i].artistName}
+  </div>
+  <img class="card-img-top" src="${data[i].albumArt}" alt="albumImage">
+  <div class="card-body">
+    <h4 class="card-text">Album Name: ${data[i].albumName}</h4>
+    <h4 class="card-text">Genre: ${data[i].genre}</h4>
+    <h4 class="card-text">Released: ${data[i].releaseDate}</h4>
+    <div class="row">
+      <a class="btn album-btn col-12 btn-default review-btn" id="l-link" href="https://pitchfork.com${data[i].reviewLink}">Read
+        Review</a>
+      <a class="btn album-btn col-12 btn-default spotify-btn" id="r-link" href="${response.albums.items[0].uri}">Listen In
+        Spotify</a>
     </div>
-    <img class="card-img-top" src="${data[i].albumArt}" alt="albumImage">
-    <div class="card-body">
-      <div class="row">
-        <a class="btn col-12 btn-default review-btn" id="l-link"
-          href="https://pitchfork.com${data[i].reviewLink}">Read Review</a>
-        <a class="btn col-12 btn-default spotify-btn" id="r-link" href="${response.albums.items[0].uri}">Listen In Spotify</a>
-      </div>
-    </div>
-  </div>`
-    $("#albums").append(albumCard)}
-    )
-    // Display the apropos information on the page
-    
-  }
- 
-});
+  </div>
+</div>`
+          $("#albums").append(albumCard)
+        }
+        )
+      // Display the apropos information on the page
+
+    }
+
+  });
 }
 
 
@@ -53,6 +55,7 @@ $.getJSON("/albums", function (data) {
 
 // Whenever someone clicks an album
 $(document).on("click", ".card", function () {
+  
   // Empty the notes from the note section
   $("#notes").empty();
   // Save the id from the album

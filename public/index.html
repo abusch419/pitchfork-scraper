@@ -8,31 +8,62 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style.css">
+
+
 </head>
 
 <body>
 
-  <div class="album-container">
-    <button id="scrape">Refresh Content</button>
-    <div id="wrapper">
-      <h1>Best New Albums</h1>
-      <div id="albums"></div>
-      <div id="notes"></div>
+   <!-- bootstrap navbar -->
+   <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-secondary">
+      <a id="scrape">Refresh Content</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#about">Albums</a>
+          <a class="nav-item nav-link" href="#experience">Notes</a>
+        
+        </div>
+      </div>
+    </nav>
+  
+    <!-- bootstrap navbar -->
+
+
+  
+
+
+
+
+
+  <div class="pad-section">
+    <div class="card-container">
+      <h2 class="mb-5">Best New Albums</h2>
+      <div class="row" id="albums">
+      </div>
     </div>
   </div>
 
+  <div id="notes"></div>
 
-  <div class="container" id="sign-in">
-    <form class="form-inline">
-      <div id="login">
-        <h2 id="#welcome-message">
-          Welcome To SoundCheck! Please Log In With Your Spotify Account.
-        </h2>
-        <button id="login-button" class="btn btn-primary">
-          Log in with Spotify
-        </button>
-      </div>
-    </form>
+
+  <div class="sign-in pad-section" id="sign-in">
+    <div class="container">
+      <form class="form-inline">
+        <div id="login">
+          <h2 id="#welcome-message">
+            Welcome To Pitchfork Scraper! Please Log In With Your Spotify Account.
+          </h2>
+          <button id="login-button" class="btn btn-primary">
+            Log in with Spotify
+          </button>
+        </div>
+      </form>
+    </div>
+
   </div>
 
   <script id="user-profile-template" type="text/x-handlebars-template">
@@ -60,7 +91,35 @@
       <dl class="dl-horizontal">
         <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
       </dl>
-    </script>
+  </script>
+
+  <nav class="navbar fixed-bottom navbar-light bg-light">
+    <div class="nav-div">
+      <span>
+        <a href="https://www.facebook.com/alex.eversbusch"><img id="social-media-icon" src="images/fb.png"
+            alt="facebook"></a>
+      </span>
+      <span>
+        <a href="https://github.com/abusch419"><img id="social-media-icon" src="images/github.png" alt="github"></a>
+      </span>
+      <span>
+        <a href="https://www.instagram.com/localmotiveathens/"><img id="social-media-icon" src="images/insta.png"
+            alt="insta"></a>
+      </span>
+      <span>
+        <a href="https://www.linkedin.com/in/alex-eversbusch-59834b25/"><img id="social-media-icon"
+            src="images/linkedin.png" alt="linkedin"></a>
+      </span>
+      <span>
+        <a href="https://soundcloud.com/localmotiveathens"><img id="social-media-icon" src="images/soundcloud.png"
+            alt="soundcloud"></a>
+      </span>
+      <span>
+        <a href="images/AlexEversbuschResume.pdf"><img id="social-media-icon" src="images/resume.png" alt="resume"></a>
+      </span>
+    </div>
+
+  </nav>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -72,6 +131,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
   <!-- <script src="spotify.js"></script> -->
   <script src="app.js"></script>
+
 </body>
 
 </html>
