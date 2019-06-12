@@ -2,6 +2,7 @@
 // if not, show a message that the database is up to date
 $("#scrape").on("click", function (e) {
   e.preventDefault()
+  console.log("scrape")
   return $.get("/scrape", function (data) {
 
   }).then(renderAlbums())
@@ -19,15 +20,16 @@ function renderAlbums(data) {
       getAlbumUri(data[i].albumName, access_token)
         .then(function (response) {
           let albumCard = 
-  `<div class="card col-12 col-md-4 col-lg-4" data-id="${data[i]._id}" style="width: 18rem;">
+  `<div class="card col-12 col-md-4 col-lg-4" style="width: 18rem;">
   <div class="card-header" id="project-name">
     ${data[i].artistName}
   </div>
-  <img class="card-img-top" src="${data[i].albumArt}" alt="albumImage">
+  <img class="card-img-top" src="${data[i].albumArt}" data-id="${data[i]._id}" alt="albumImage">      
+  <div class="row" id="notes" data-id="${data[i]._id}"></div>
   <div class="card-body">
-    <h4 class="card-text">Album Name: ${data[i].albumName}</h4>
-    <h4 class="card-text">Genre: ${data[i].genre}</h4>
-    <h4 class="card-text">Released: ${data[i].releaseDate}</h4>
+    <p class="card-text">Album Name: ${data[i].albumName}</p>
+    <p class="card-text">Genre: ${data[i].genre}</p>
+    <p class="card-text">Released: ${data[i].releaseDate}</p>
     <div class="row">
       <a class="btn album-btn col-12 btn-default review-btn" id="l-link" href="https://pitchfork.com${data[i].reviewLink}">Read
         Review</a>
@@ -54,13 +56,15 @@ function renderAlbums(data) {
 
 
 // Whenever someone clicks an album
-$(document).on("click", ".card", function () {
+$(document).on("click", ".card-img-top", function () {
   
   // Empty the notes from the note section
-  $("#notes").empty();
+  
+  
   // Save the id from the album
   var thisId = $(this).attr("data-id");
-
+  let selectedNote = $(`#notes[data-id="${thisId}"]`)
+  $(selectedNote).empty();
   // Now make an ajax call for the Article
   $.ajax({
     method: "GET",
@@ -69,15 +73,10 @@ $(document).on("click", ".card", function () {
     // With that done, add the note information to the page
     .then(function (data) {
       console.log(data);
-      // The artistName of the article
-      $("#notes").append("<h2>" + data.artistName + "</h2>");
-      // An input to enter a new artistName
-      $("#notes").append("<input id='titleinput' name='title' >");
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+      $(selectedNote).append("<textarea id='bodyinput' name='body'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-
+      $(selectedNote).append(`<a class="btn album-btn col-12 btn-default" data-id="${data._id}" id="savenote">Save</a>`);
       // If there's a note in the article
       if (data.note) {
         // Place the artistName of the note in the artistName input
@@ -92,7 +91,7 @@ $(document).on("click", ".card", function () {
 $(document).on("click", "#savenote", function () {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
-
+  let selectedNote = $(`#notes[data-id="${thisId}"]`)
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
     method: "POST",
@@ -109,7 +108,7 @@ $(document).on("click", "#savenote", function () {
       // Log the response
       console.log(data);
       // Empty the notes section
-      $("#notes").empty();
+      $(selectedNote).empty();
     });
 
   // Also, remove the values entered in the input and textarea for note entry
@@ -211,9 +210,9 @@ let access_token;
     // hiding from DOM until user is logged in to spotify
     $("#user-profile").hide();
     $(".album-container").hide();
-    // renderAlbums();
+    renderAlbums();
   }
-})();
+})()
 
 
 function getAlbumUri(searchParams, token) {
