@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6, a {
 /* about me text */
 
 .sign-in {
+    margin-top: 10px;
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -42,6 +43,13 @@ h1, h2, h3, h4, h5, h6, a {
     margin-bottom: 10px;
     padding: 0;
 }
+
+#login {
+margin-top: 200px;    
+}
+#login-button {
+    margin-top: 20px;    
+    }
 
 .card-container {
     padding-right: 50px;
@@ -81,9 +89,9 @@ h1, h2, h3, h4, h5, h6, a {
     font-size: 17px;
     font-style: normal;
     font-weight: 300;
-    line-height: 15px;
     padding: 5px;
     text-align: center;
+    margin: 0;
 }
 
 .card-header {
@@ -181,6 +189,37 @@ h1, h2, h3, h4, h5, h6, a {
     transform: skew(8deg) rotate(3deg);
 }
 
+#notes {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+textarea, input {
+    display: block;
+    width: 100%;
+    background-color: lightgrey;
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+textarea {
+    height: 200px;
+    font-size: 18px;
+}
+
+.nav-div {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* card image shadow effect */
 
 .album-btn {
@@ -188,14 +227,18 @@ h1, h2, h3, h4, h5, h6, a {
     height: auto;
     width: 100px;
     border-color: #2e82d9!important;
-    color: #2e82d9;
+    color: #2e82d9!important;
     transition: all .2s ease;
 }
 
 .album-btn:hover {
-    color: white;
+    color: white!important;
     background: #2e82d9;
     transition: all .2s ease;
+}
+
+.review-btn {
+    margin-top: 15px;
 }
 
 #r-link {
@@ -204,12 +247,6 @@ h1, h2, h3, h4, h5, h6, a {
 
 #l-link {
     float: left;
-}
-
-.nav-div {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 #social-media-icon {
