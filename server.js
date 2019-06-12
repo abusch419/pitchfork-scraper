@@ -30,14 +30,14 @@ app.use(express.static("public"));
 mongoose.connect("mongodb://localhost/pitchfork", { useNewUrlParser: true });
 
 // Routes
-
+let scrapeArray = []
 // A GET route for scraping the echoJS website
 app.get("/scrape", function (req, res) {
   // First, we grab the body of the html with axios
   axios.get("https://pitchfork.com/reviews/best/albums/").then(function (response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
-
+    let existingAlbums = []
     // Now, we grab every h2 within an article tag, and do the following:
     $(".review").each(function (i, element) {
       // Save an empty result object
@@ -50,21 +50,27 @@ app.get("/scrape", function (req, res) {
       result.albumName = $(this).find('h2').text()
       result.genre = $(this).find('.genre-list__item').text()
       result.releaseDate = $(this).find('.pub-date').text()
-        
-      // Create a new Article using the `result` object built from scraping
-      db.Album.create(result)
-        .then(function (dbAlbums) {
-          // View the added result in the console
-          console.log(dbAlbums);
-        })
-        .catch(function (err) {
-          // If an error occurred, log it
-          console.log(err);
-        });
-    });
 
-    // Send a message to the client
-    res.send("Scrape Complete");
+
+      db.Album.find({ albumName: result.albumName }, function (err, docs) {
+        if (docs.length) {
+          console.log("do nothing")
+        }
+        else {
+          db.Album.create(result)
+            .then(function (dbAlbums) {
+              // View the added result in the console
+              console.log(dbAlbums);
+            })
+            .catch(function (err) {
+              // If an error occurred, log it
+              console.log(err);
+            })
+        }
+      });
+    
+    });
+    res.send("Scraped!")
   });
 });
 
@@ -107,12 +113,12 @@ app.post("/albums/:id", function (req, res) {
   // and update it's "note" property with the _id of the new note
   db.Note.create(req.body)
     .then(function (dbNote) {
-      return db.Album.findOneAndUpdate({_id: req.params.id}, { $set: {note: dbNote._id}}, { new: true })
+      return db.Album.findOneAndUpdate({ _id: req.params.id }, { $set: { note: dbNote._id } }, { new: true })
     })
     .then(function (dbAlbum) {
       res.json(dbAlbum)
     })
-    .catch(function(err) {
+    .catch(function (err) {
       res.json(err)
     })
 });

@@ -1,5 +1,18 @@
-// Grab the albums as a json
+// scrape the website, if there are new albums add them to the database, 
+// if not, show a message that the database is up to date
+$("#scrape").on("click", function(e) {
+  e.preventDefault()
+  return $.get("/scrape", function(data) {
+    
+  }).then(renderAlbums())
+})
+
+
+
+function renderAlbums(data) {
+// Grab the albums which are currently in the databse as a json
 $.getJSON("/albums", function (data) {
+  $(".albums").empty()
   // For each one
   for (let i = 0; i < data.length; i++) {
     // run get uri async
@@ -29,16 +42,20 @@ $.getJSON("/albums", function (data) {
   }
  
 });
+}
 
 
 
 
 
-// Whenever someone clicks a p tag
+
+
+
+// Whenever someone clicks an album
 $(document).on("click", ".card", function () {
   // Empty the notes from the note section
   $("#notes").empty();
-  // Save the id from the p tag
+  // Save the id from the album
   var thisId = $(this).attr("data-id");
 
   // Now make an ajax call for the Article
@@ -191,6 +208,7 @@ let access_token;
     // hiding from DOM until user is logged in to spotify
     $("#user-profile").hide();
     $(".album-container").hide();
+    // renderAlbums();
   }
 })();
 
