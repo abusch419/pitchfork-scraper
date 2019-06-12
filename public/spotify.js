@@ -73,7 +73,7 @@ let access_token;
         e.preventDefault();
 
         var client_id = "68383a582d2344cdbd6623f1a47e797d"; // Your client id
-        var redirect_uri = "http://localhost:3000/"
+        var redirect_uri = "https://quiet-earth-57720.herokuapp.com/"
         var state = generateRandomString(16);
         localStorage.setItem(stateKey, state);
         var scope = "user-read-private user-read-email playlist-modify";
