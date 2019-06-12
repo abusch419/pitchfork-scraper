@@ -1,40 +1,67 @@
-body {
-    background: grey;
+* {
+    box-sizing: border-box;
 }
 
-#wrapper {
-    width: 960px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5%;
-}
-
-#albums {
-    display: inline-block;
-    overflow: auto;
-    width: 60%;
-    height: 700px;
-}
-
-#notes {
-    float: right;
-    width: 30%;
-}
-
-textarea, input {
-    display: block;
+html, body {
+    height: 100%;
     width: 100%;
-    background-color: #FCF5C7;
+    font-family: 'Open-Sans' serif;
 }
 
-input {
-    height: 36px;
-    font-size: 24px;
+.navbar-light .navbar-nav .nav-link {
+    color: white;
 }
 
-textarea {
-    height: 200px;
-    font-size: 18px;
+h1, h2, h3, h4, h5, h6, a {
+    font-family: 'Saira Extra Condensed', serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* padded section */
+
+.pad-section {
+    padding: 50px 0;
+}
+
+.pad-section img {
+    width: 100%;
+}
+
+/* about me text */
+
+.sign-in {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sign-in h1 {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.card-container {
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-top: 50px;
+}
+
+/* additional sections */
+
+#sign-in {
+    background: darkslategrey;
+    color: lightgray;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .card-container {
@@ -49,16 +76,14 @@ textarea {
 }
 
 .card-text {
-    padding-bottom: 0px;
     color: #888888;
     font-family: llxb;
     font-size: 17px;
     font-style: normal;
     font-weight: 300;
-    line-height: 20px;
-    padding-bottom: 25px;
-    padding-top: 5px;
-    padding-left: 13px;
+    line-height: 15px;
+    padding: 5px;
+    text-align: center;
 }
 
 .card-header {
@@ -118,6 +143,8 @@ textarea {
     width: 150px; */
     object-fit: cover;
     margin-top: 15px;
+    image-rendering: auto;
+    -moz-crisp-edges: crisp-edges;
 }
 
 /* card image shadow effect */
@@ -152,4 +179,61 @@ textarea {
     -ms-transform: skew(8deg) rotate(3deg);
     -o-transform: skew(8deg) rotate(3deg);
     transform: skew(8deg) rotate(3deg);
+}
+
+/* card image shadow effect */
+
+.album-btn {
+    margin-top: 5px;
+    height: auto;
+    width: 100px;
+    border-color: #2e82d9!important;
+    color: #2e82d9;
+    transition: all .2s ease;
+}
+
+.album-btn:hover {
+    color: white;
+    background: #2e82d9;
+    transition: all .2s ease;
+}
+
+#r-link {
+    float: right;
+}
+
+#l-link {
+    float: left;
+}
+
+.nav-div {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#social-media-icon {
+    height: 20px;
+    width: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: unset;
+    flex: unset;
+}
+
+/* url(../images/bg1.png); */
+
+@media (max-width:400px) {
+    #sign-in {
+        background: darkslategrey;
+        display: table;
+        height: 90%;
+        position: relative;
+        width: 100%;
+        margin-top: 76px;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+    }
 }
