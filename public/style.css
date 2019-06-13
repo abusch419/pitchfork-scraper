@@ -57,12 +57,8 @@ button {
     width: 160px;
 }
 
-#srape {
-    border-radius: 7.25rem!important;
-}
-
-#top {
-    border-radius: 7.25rem!important;
+#scrape {
+    width: 100%
 }
 
 .card-container {
