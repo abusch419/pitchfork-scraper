@@ -12,7 +12,6 @@ html, body {
     color: black;
 }
 
-
 h1, h2, h3, h4, h5, h6, a {
     font-family: 'Saira Extra Condensed', serif;
     font-weight: 700;
@@ -51,6 +50,10 @@ h1, h2, h3, h4, h5, h6, a {
 
 #login-button {
     border-radius: 7.25rem;
+}
+
+button {
+    border-radius: 7.25rem!important;
 }
 
 #srape {
