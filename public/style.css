@@ -9,7 +9,7 @@ html, body {
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color: white;
+    color: black
 }
 
 h1, h2, h3, h4, h5, h6, a {
@@ -61,7 +61,7 @@ margin-top: 200px;
 
 #sign-in {
     background: linear-gradient(45deg,#7be7d7 1%,#7be7d7 40%,#7be7d7 40%,#86a4e3 100%);
-    color: lightgray;
+    color: black;
     display: table;
     height: 100%;
     position: relative;
