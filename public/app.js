@@ -20,7 +20,7 @@ function renderAlbums(data) {
       getAlbumUri(data[i].albumName, access_token)
         .then(function (response) {
           let albumCard = 
-  `<div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4" style="width: 18rem;">
+  `<div class="card col-xs-12 col-sm-4 col-md-4 col-lg-4" style="width: 18rem;">
   <div class="card-header" id="project-name">
     ${data[i].artistName}
   </div>
