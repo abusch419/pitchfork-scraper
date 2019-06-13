@@ -36,14 +36,14 @@ app.get("/scrape", function (req, res) {
           db.Album.create(result)
             .then(function (dbAlbums) {
               // View the added result in the console
-              db.getCollection('Album').find({}).sort({releaseDate: -1})
+              console.log(dbAlbums);
             })
             .catch(function (err) {
               // If an error occurred, log it
               console.log(err);
             })
         }
-      })
+      });
     
     });
     res.send("Scraped!")
