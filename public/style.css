@@ -48,6 +48,8 @@ button {
 #scrape {
     width: 100%;
     margin-bottom: 20px;
+    position: relative;
+    top: -37px;
 }
 
 .card-container {
@@ -58,6 +60,8 @@ button {
 
 .card-container h2 {
     text-align: center;
+    position: relative;
+    top: -42px;
 }
 
 /* additional sections */
@@ -84,6 +88,8 @@ button {
 .card {
     padding: 20px;
     border: none;
+    position: relative;
+    top: -86px;
 }
 
 .card-text {
