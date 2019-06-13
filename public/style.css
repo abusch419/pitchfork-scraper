@@ -61,7 +61,7 @@ margin-top: 200px;
 
 #sign-in {
     background: linear-gradient(45deg,#7be7d7 1%,#7be7d7 40%,#7be7d7 40%,#86a4e3 100%);
-    box-shadow: inset 0px 0px 40px 40px #DBA632;
+    box-shadow: inset 20px 0px 0px 0px white;
     color: black;
     display: table;
     height: 100%;
