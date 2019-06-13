@@ -12,6 +12,7 @@ html, body {
     color: black
 }
 
+
 h1, h2, h3, h4, h5, h6, a {
     font-family: 'Saira Extra Condensed', serif;
     font-weight: 700;
@@ -70,7 +71,6 @@ h1, h2, h3, h4, h5, h6, a {
 
 #sign-in {
     background: linear-gradient(45deg, #7be7d7 1%, #7be7d7 40%, #7be7d7 40%, #86a4e3 100%);
-    box-shadow: inset 20px 0px 0px 0px white;
     color: black;
     display: table;
     height: 100%;
