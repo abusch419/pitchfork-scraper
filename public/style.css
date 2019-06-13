@@ -8,8 +8,9 @@ html, body {
     font-family: 'Open-Sans' serif;
 }
 
-.navbar-light .navbar-nav .nav-link {
-    color: black
+.navbar-inner {
+    color: black;
+    background: transparent;
 }
 
 
