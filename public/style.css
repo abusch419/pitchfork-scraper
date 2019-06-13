@@ -56,6 +56,10 @@ button {
     margin-top: 50px;
 }
 
+.card-container h2 {
+    text-align: center;
+}
+
 /* additional sections */
 
 #sign-in {
