@@ -18,18 +18,6 @@ h1, h2, h3, h4, h5, h6, a {
     text-transform: uppercase;
 }
 
-/* padded section */
-
-.pad-section {
-    padding: 50px 0;
-}
-
-.pad-section img {
-    width: 100%;
-}
-
-/* about me text */
-
 .sign-in {
     margin-top: 0px;
     display: table-cell;
@@ -59,6 +47,7 @@ button {
 
 #scrape {
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .card-container {
