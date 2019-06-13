@@ -276,19 +276,3 @@ textarea {
     flex: unset;
 }
 
-/* url(../images/bg1.png); */
-
-@media (max-width:400px) {
-    #sign-in {
-        background: darkslategrey;
-        display: table;
-        height: 90%;
-        position: relative;
-        width: 100%;
-        margin-top: 76px;
-        -webkit-background-size: contain;
-        -moz-background-size: contain;
-        -o-background-size: contain;
-        background-size: contain;
-    }
-}
