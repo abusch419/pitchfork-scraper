@@ -32,6 +32,12 @@ h1, h2, h3, h4, h5, h6, a {
     padding: 0;
 }
 
+.sign-in p {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #login {
     margin-top: 200px;
 }
